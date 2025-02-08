@@ -1,0 +1,80 @@
+{
+  "name": "prompt-linter",
+  "displayName": "Prompt Linter",
+  "description": "Linter for .prompt files",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Linters"
+  ],
+  "activationEvents": [
+    "onLanguage:plaintext"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "prompt",
+        "extensions": [
+          ".prompt"
+        ]
+      }
+    ],
+    "configuration": {
+      "title": "Prompt Linter",
+      "properties": {
+        "promptLinter.anthropicApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API Key for prompt linting"
+        },
+        "promptLinter.model": {
+          "type": "string",
+          "default": "claude-3-5-sonnet-20241022",
+          "description": "Anthropic model to use for analysis",
+          "enum": [
+            "claude-3-5-sonnet-20241022",
+            "claude-3-haiku-20240307",
+            "claude-3-opus-20240229",
+            "claude-3-sonnet-20240229",
+            "claude-2.1"
+          ],
+          "enumDescriptions": [
+            "Latest Sonnet model - Best balance of performance and cost ($3/M tokens)",
+            "Fastest and most cost-effective ($0.25/M tokens)",
+            "Most capable model - Higher cost ($15/M tokens)",
+            "Previous Sonnet model ($3/M tokens)",
+            "Legacy model - Not recommended for new projects"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run lint"
+  },
+  "devDependencies": {
+    "@types/node": "^16.x",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^4.9.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.14.1"
+  },
+  "pricing": "Trial",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "license": "MIT"
+}
