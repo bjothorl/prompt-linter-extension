@@ -85,7 +85,9 @@
     "lint": "eslint src --ext ts",
     "pretest": "npm run lint",
     "analyze": "cross-env ANALYZE=true webpack",
-    "copy-prompts": "node scripts/copy-prompts.js"
+    "copy-prompts": "node scripts/copy-prompts.js",
+    "webpack": "webpack --mode development",
+    "webpack-prod": "webpack --mode production"
   },
   "devDependencies": {
     "@types/node": "^16.x",

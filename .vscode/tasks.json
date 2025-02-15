@@ -53,6 +53,24 @@
                     "endsPattern": "Prompt files copied successfully"
                 }
             }
+        },
+        {
+            "label": "webpack-dev",
+            "type": "npm",
+            "script": "webpack",
+            "group": "build",
+            "problemMatcher": ["$tsc"]
+        },
+        {
+            "label": "run-webpacked",
+            "type": "shell",
+            "command": "code --extensionDevelopmentPath=${workspaceFolder} --disable-extensions",
+            "dependsOn": ["webpack-dev"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
         }
     ]
 } 

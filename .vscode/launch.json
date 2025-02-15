@@ -13,6 +13,20 @@
             ],
             "preLaunchTask": "watch-all",
             "sourceMaps": true
+        },
+        {
+            "name": "Run Webpacked Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "--disable-extensions"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "webpack-dev",
+            "sourceMaps": true
         }
     ]
 } 
