@@ -1,0 +1,18 @@
+#prompt-linter ignore
+This prompt demonstrates appropriate instruction complexity
+- Clear, numbered steps
+- Logical flow
+- Manageable chunks of information
+#endignore
+
+You will help users analyze code performance. Follow these steps:
+
+1. First, identify the time complexity of the provided code
+2. Then, list any nested loops or recursive calls
+3. Next, highlight potential bottlenecks
+4. Finally, suggest optimization strategies
+
+For each step, provide:
+- Brief explanation
+- Specific examples if applicable
+- Alternative approaches when relevant 

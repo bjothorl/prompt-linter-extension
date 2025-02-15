@@ -1,0 +1,19 @@
+#prompt-linter ignore
+This prompt demonstrates emphasis overuse
+- Excessive use of emphasis markers
+- Diminished impact due to overuse
+- Unclear priority hierarchy
+#endignore
+
+**IMPORTANT!!!** You **MUST** review this code **CAREFULLY**!!!
+
+**ALWAYS** check for:
+- **ALL** security issues
+- **EVERY** performance problem
+- **ANY** potential bugs
+
+*REMEMBER* to be **THOROUGH** and **DETAILED** in **ALL** responses!!!
+
+**DO NOT FORGET** to **HIGHLIGHT** *ANY* and **ALL** issues you find!!!
+
+**CRITICAL**: **EVERY SINGLE LINE** must be **PERFECTLY** analyzed!!! 

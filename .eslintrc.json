@@ -33,6 +33,14 @@
             {
                 "selector": "typeLike",
                 "format": ["PascalCase"]
+            },
+            {
+                "selector": "objectLiteralProperty",
+                "format": null,
+                "filter": {
+                    "regex": "^(max_tokens|input_tokens|output_tokens)$",
+                    "match": true
+                }
             }
         ],
         "@typescript-eslint/semi": "warn",

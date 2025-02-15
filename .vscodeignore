@@ -1,0 +1,20 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+.yarnrc
+vsc-extension-quickstart.md
+**/tsconfig.json
+**/.eslintrc.json
+**/*.map
+**/*.ts
+.prompt-linter-test-proj/**
+.github/**
+CONTRIBUTING.md
+jest.config.js
+webpack.config.js
+
+# Keep these files
+!out/**
+!node_modules/**
+!LICENSE

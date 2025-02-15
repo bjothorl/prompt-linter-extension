@@ -1,8 +1,8 @@
 {
   "name": "prompt-linter",
   "displayName": "Prompt Linter",
-  "description": "Linter for .prompt files",
-  "version": "0.0.1",
+  "description": "AI-powered linter for analyzing prompts. Identifies logical conflicts, ambiguities, and potential improvements in your prompts using Claude.",
+  "version": "0.1.0",
   "publisher": "your-publisher-name",
   "engines": {
     "vscode": "^1.80.0"
@@ -26,55 +26,110 @@
     "configuration": {
       "title": "Prompt Linter",
       "properties": {
+        "promptLinter.aiServiceProvider": {
+          "type": "string",
+          "default": "webprompter",
+          "enum": [
+            "webprompter",
+            "anthropic"
+          ],
+          "description": "AI service provider to use for analysis",
+          "order": 1
+        },
+        "promptLinter.webprompterApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "WebPrompter API Key",
+          "order": 2
+        },
         "promptLinter.anthropicApiKey": {
           "type": "string",
           "default": "",
-          "description": "Anthropic API Key for prompt linting"
+          "description": "Anthropic API Key",
+          "order": 3
         },
-        "promptLinter.model": {
+        "promptLinter.anthropicModel": {
           "type": "string",
           "default": "claude-3-5-sonnet-20241022",
-          "description": "Anthropic model to use for analysis",
+          "description": "Anthropic model to use for analysis (only used when Anthropic is selected)",
           "enum": [
             "claude-3-5-sonnet-20241022",
-            "claude-3-haiku-20240307",
-            "claude-3-opus-20240229",
-            "claude-3-sonnet-20240229",
-            "claude-2.1"
+            "claude-3-5-haiku-20241022",
+            "claude-3-opus-20240229"
           ],
           "enumDescriptions": [
             "Latest Sonnet model - Best balance of performance and cost ($3/M tokens)",
             "Fastest and most cost-effective ($0.25/M tokens)",
-            "Most capable model - Higher cost ($15/M tokens)",
-            "Previous Sonnet model ($3/M tokens)",
-            "Legacy model - Not recommended for new projects"
-          ]
+            "Most capable model - Higher cost ($15/M tokens)"
+          ],
+          "order": 4
+        },
+        "promptLinter.filePatterns": {
+          "type": "array",
+          "default": [
+            "**/*.prompt"
+          ],
+          "description": "File patterns to analyze (e.g., ['**/*.prompt', '**/*.system', '**/prompts/*.txt'])",
+          "items": {
+            "type": "string"
+          },
+          "order": 5
         }
       }
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "webpack --mode production",
+    "compile": "tsc -p ./ && npm run copy-prompts",
+    "watch": "tsc -watch -p ./ & npm run copy-prompts",
     "lint": "eslint src --ext ts",
-    "pretest": "npm run lint"
+    "pretest": "npm run lint",
+    "analyze": "cross-env ANALYZE=true webpack",
+    "copy-prompts": "node scripts/copy-prompts.js"
   },
   "devDependencies": {
     "@types/node": "^16.x",
     "@types/vscode": "^1.80.0",
+    "@types/webpack": "^5.28.5",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "eslint": "^8.56.0",
-    "typescript": "^4.9.0"
+    "ts-loader": "^9.5.2",
+    "typescript": "^4.9.0",
+    "webpack": "^5.97.1",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^6.0.1",
+    "cross-env": "^7.0.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "chokidar": "^3.6.0"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.14.1"
+    "@anthropic-ai/sdk": "^0.14.1",
+    "minimatch": "^9.0.3",
+    "axios": "^1.6.8"
   },
   "pricing": "Trial",
   "galleryBanner": {
     "color": "#C80000",
     "theme": "dark"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/prompt-linter"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/prompt-linter/issues"
+  },
+  "keywords": [
+    "prompt engineering",
+    "ai",
+    "llm",
+    "claude",
+    "anthropic",
+    "linter",
+    "static analysis",
+    "prompt analysis",
+    "prompt testing"
+  ]
 }

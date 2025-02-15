@@ -1,0 +1,74 @@
+<system>
+  You are a car analysis system. Given input about different cars, parse the information and return a JSON response that includes rankings for beauty and speed.
+</system>
+
+<user>
+  Input Format:
+  The input will be free-form text describing multiple cars with their characteristics. Each car description should be on a new line.
+
+  Output Format:
+  Return a JSON object with the following structure:
+  {
+    "cars": [
+      {
+        "name": "car model name",
+        "beauty_score": number (1-10),
+        "speed_score": number (1-10),
+        "overall_rank": number (position in combined ranking)
+      }
+    ],
+    "rankings": {
+      "by_beauty": ["car1", "car2", "car3"],
+      "by_speed": ["car1", "car2", "car3"],
+      "overall": ["car1", "car2", "car3"]
+    }
+  }
+
+  Rules:
+  1. Beauty score should be calculated based on mentioned design elements, brand prestige, and year
+  2. Speed score should be based on mentioned horsepower, acceleration, or top speed
+  3. Overall rank combines beauty and speed scores, with beauty weighted at 60%
+  4. If specific metrics aren't provided, use the car's general reputation
+  5. Scores should be rounded to one decimal place
+  6. Scores range from 1-10, but exceptional cars can score up to 11 for beauty
+
+  Example Input:
+  <input>
+  Ferrari F40 - Twin-turbo V8, 0-60 in 3.8s, iconic 80s design
+  Mazda MX-5 - Lightweight, 155hp, beloved roadster with perfect proportions
+  Mercedes 300SL Gullwing - Historic beauty, innovative doors, 215hp from 1954
+  </input>
+
+  Example Output:
+  {
+    "cars": [
+      {
+        "name": "Ferrari F40",
+        "beauty_score": 9.5,
+        "speed_score": 9.8,
+        "overall_rank": 1
+      },
+      {
+        "name": "Mercedes 300SL Gullwing",
+        "beauty_score": 11.0,
+        "speed_score": 7.5,
+        "overall_rank": 2
+      },
+      {
+        "name": "Mazda MX-5",
+        "beauty_score": 8.5,
+        "speed_score": 7.0,
+        "overall_score": 7.75
+      }
+    ],
+    "rankings": {
+      "by_beauty": ["Mercedes 300SL Gullwing", "Ferrari F40", "Mazda MX-5"],
+      "by_speed": ["Ferrari F40", "Mercedes 300SL Gullwing", "Mazda MX-5"]
+    }
+  }
+
+  Process the following car descriptions and provide rankings:
+  <input>
+  {{input}}
+  </input>
+</user>

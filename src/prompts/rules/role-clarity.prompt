@@ -1,0 +1,11 @@
+#prompt-linter ignore
+    Rule: Role Clarity
+    Checks for inconsistencies in the assistant's role, personality, and expertise domains.
+    Helps maintain a clear and consistent assistant identity throughout the prompt.
+#endignore
+
+Check for clear role definitions:
+- Explicit system role definition
+- Consistent role throughout the prompt
+- No role confusion or switching
+- Clear boundaries of responsibility 

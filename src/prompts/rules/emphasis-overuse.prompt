@@ -1,0 +1,11 @@
+#prompt-linter ignore
+    Rule: Emphasis Overuse
+    Checks for excessive use of emphasis markers (**, !!, CAPS) that might diminish their impact.
+    Ensures emphasis is used effectively and meaningfully.
+#endignore
+
+Check for overuse of emphasis markers (max 2-3 per prompt):
+- Words like "important", "critical", "crucial", "essential"
+- ALL CAPS text
+- Multiple exclamation marks
+- Repeated emphasis of the same point 

@@ -1,0 +1,11 @@
+#prompt-linter ignore
+    Rule: Logical Conflicts
+    Identifies contradictory instructions and mutually exclusive requirements.
+    Ensures the prompt doesn't contain impossible or conflicting demands.
+#endignore
+
+Check for logical conflicts and ambiguities in the prompt:
+- Contradictory instructions
+- Unclear priorities between conflicting requirements
+- Ambiguous references or pronouns
+- Inconsistent conditions or constraints 

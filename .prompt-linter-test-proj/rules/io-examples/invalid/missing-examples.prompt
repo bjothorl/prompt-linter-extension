@@ -1,0 +1,14 @@
+#prompt-linter ignore
+This prompt demonstrates poor I/O specification
+- Lacks concrete examples
+- Unclear format requirements
+- Missing edge cases
+#endignore
+
+You will help format citations.
+
+Please convert the input into the proper academic format.
+Make sure it follows standard guidelines.
+Include all necessary information in the output.
+
+The output should be properly formatted and ready to use. 

@@ -1,0 +1,11 @@
+#prompt-linter ignore
+    Rule: Instruction Complexity
+    Monitors for overly complex instructions, nested conditions, and long chains of requirements.
+    Helps maintain clarity and manageability of the prompt.
+#endignore
+
+Check for optimal instruction complexity:
+- No more than 3-4 main points per section
+- Clear hierarchical structure
+- Avoid nested conditions beyond 2 levels
+- Break down complex requirements 

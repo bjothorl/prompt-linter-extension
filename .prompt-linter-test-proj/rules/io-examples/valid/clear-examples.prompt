@@ -1,0 +1,19 @@
+#prompt-linter ignore
+This prompt demonstrates good input/output examples
+- Clear input format specification
+- Explicit output structure
+- Representative examples
+#endignore
+
+You will help format bibliographic references.
+
+Input format:
+Author(s), Title, Year, Publisher
+Example input: "John Smith, The Art of Programming, 2023, TechBooks"
+
+Output format:
+Smith, J. (2023). The Art of Programming. TechBooks.
+
+Additional example:
+Input: "Jane Doe, Mary Johnson, Data Science Basics, 2022, DataPub"
+Output: Doe, J., & Johnson, M. (2022). Data Science Basics. DataPub. 

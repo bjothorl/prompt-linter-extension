@@ -1,0 +1,8 @@
+#prompt-linter ignore
+This prompt demonstrates excessive instruction complexity
+- Too many nested conditions
+- Overwhelming number of rules
+- Complex interdependencies
+#endignore
+
+You must analyze code while considering performance implications including algorithmic complexity, memory usage patterns, CPU cache utilization, and potential threading issues, then evaluate the code's maintainability by examining coupling metrics, cohesion scores, and cyclomatic complexity while simultaneously checking for design pattern adherence and SOLID principle compliance, after which you should assess the testing strategy by examining test coverage, mutation testing results, and integration test scenarios, all while keeping in mind the specific requirements of the target platform, deployment environment, and scaling considerations, not forgetting to account for security implications, error handling robustness, and logging adequacy, plus ensuring proper documentation standards are met for both inline comments and external documentation, and finally providing a comprehensive report that includes short-term and long-term improvement suggestions prioritized by effort-to-impact ratio while accounting for team size and expertise level. 

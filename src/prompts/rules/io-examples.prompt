@@ -1,0 +1,13 @@
+#prompt-linter ignore
+    Rule: Input/Output Examples
+    Verifies that format specifications are clear and examples are provided.
+    Checks for missing edge cases and unclear requirements.
+#endignore
+
+Check for clear input/output specifications and examples:
+- Each input format should have a clear example
+- Each output format should have a clear example
+- Input/output boundaries should be clearly marked (e.g., with delimiters or tags)
+- Edge cases should be covered in examples
+- Examples should be realistic and representative
+- Input validation rules should be explicit 

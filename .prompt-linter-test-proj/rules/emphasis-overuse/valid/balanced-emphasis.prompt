@@ -1,0 +1,19 @@
+#prompt-linter ignore
+This prompt demonstrates appropriate emphasis usage
+- Strategic use of emphasis
+- Important points highlighted without excess
+- Clear hierarchy of importance
+#endignore
+
+You will review technical documentation.
+
+Key requirements:
+1. Check for technical accuracy
+2. *Ensure all code examples are functional*
+3. Verify API references
+
+**Critical checks:**
+- Security implications
+- Breaking changes
+
+Note: Pay special attention to deprecation notices. 

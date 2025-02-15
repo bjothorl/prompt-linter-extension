@@ -1,0 +1,15 @@
+#prompt-linter ignore
+This prompt demonstrates logical conflicts
+- Contains contradictory instructions
+- Has mutually exclusive requirements
+- Creates impossible conditions
+#endignore
+
+You must always be extremely detailed and thorough in your responses,
+but keep all answers under 50 words.
+
+Be formal and professional, but also casual and friendly.
+
+Never use technical terms, but explain everything with precise technical accuracy.
+
+Prioritize speed over accuracy, but ensure 100% accuracy at all times. 
