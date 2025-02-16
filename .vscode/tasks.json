@@ -2,6 +2,16 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "type": "npm",
+            "script": "compile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$tsc"],
+            "label": "npm: compile"
+        },
+        {
             "type": "typescript",
             "tsconfig": "tsconfig.json",
             "option": "watch",
@@ -10,16 +20,7 @@
             ],
             "label": "tsc: watch",
             "group": "build",
-            "isBackground": true,
-            "dependsOn": ["copy-prompts"]
-        },
-        {
-            "label": "copy-prompts",
-            "type": "npm",
-            "script": "copy-prompts",
-            "presentation": {
-                "reveal": "never"
-            }
+            "isBackground": true
         },
         {
             "type": "npm",
@@ -27,50 +28,11 @@
             "problemMatcher": "$eslint-stylish"
         },
         {
-            "label": "watch-all",
-            "dependsOn": [
-                "tsc: watch",
-                "watch-prompts"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "watch-prompts",
-            "type": "shell",
-            "command": "node",
-            "args": ["scripts/copy-prompts.js", "--watch"],
-            "isBackground": true,
-            "problemMatcher": {
-                "pattern": {
-                    "regexp": "^.*$"
-                },
-                "background": {
-                    "activeOnStart": true,
-                    "beginsPattern": "Watching for prompt file changes...",
-                    "endsPattern": "Prompt files copied successfully"
-                }
-            }
-        },
-        {
             "label": "webpack-dev",
             "type": "npm",
             "script": "webpack",
             "group": "build",
             "problemMatcher": ["$tsc"]
-        },
-        {
-            "label": "run-webpacked",
-            "type": "shell",
-            "command": "code --extensionDevelopmentPath=${workspaceFolder} --disable-extensions",
-            "dependsOn": ["webpack-dev"],
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
-            "problemMatcher": []
         }
     ]
 } 

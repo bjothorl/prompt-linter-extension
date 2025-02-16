@@ -11,7 +11,7 @@
             "outFiles": [
                 "${workspaceFolder}/out/**/*.js"
             ],
-            "preLaunchTask": "watch-all",
+            "preLaunchTask": "npm: compile",
             "sourceMaps": true
         },
         {

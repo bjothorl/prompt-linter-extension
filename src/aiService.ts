@@ -2,8 +2,9 @@ import * as vscode from 'vscode';
 import { AnthropicService } from './services/anthropicService';
 import { WebPrompterService } from './services/webPrompterService';
 import { AnalysisResponse } from './types';
+import { AiService as AiServiceInterface } from './types';
 
-export class AiService {
+export class AiService implements AiServiceInterface {
     private service: AnthropicService | WebPrompterService | null = null;
     public lastResponse = '';
     public lastRawResponse = '';

@@ -1,7 +1,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import analyzePrompt from '../prompts/analyze.prompt';
+import roleClarity from '../prompts/rules/role-clarity.prompt';
+import logicalConflicts from '../prompts/rules/logical-conflicts.prompt';
+import ioExamples from '../prompts/rules/io-examples.prompt';
+import instructionComplexity from '../prompts/rules/instruction-complexity.prompt';
+import emphasisOveruse from '../prompts/rules/emphasis-overuse.prompt';
 
 export class PromptUtils {
+    private static readonly rules = [
+        roleClarity,
+        logicalConflicts,
+        ioExamples,
+        instructionComplexity,
+        emphasisOveruse
+    ];
+
     /**
      * Strips prompt-linter comments from prompt content
      */
@@ -40,19 +54,14 @@ export class PromptUtils {
      * Loads the main prompt template and injects rules
      */
     static loadPromptTemplate(templateName: string): string {
-        const templatePath = path.join(__dirname, '..', 'prompts', templateName);
-        let template = this.loadPromptFile(templatePath);
+        let template = analyzePrompt;
 
-        // Load and inject all rules if template contains {{RULES}}
+        // Inject rules if template contains {{RULES}}
         if (template.includes('{{RULES}}')) {
-            try {
-                const rulesPath = path.join(__dirname, '..', 'prompts', 'rules');
-                const rulesContent = this.loadPromptDirectory(rulesPath, '.prompt');
-                template = template.replace('{{RULES}}', rulesContent);
-            } catch (error) {
-                console.error('Failed to load rule files:', error);
-                throw new Error('Failed to load rule files. Check the rules directory.');
-            }
+            const rulesContent = this.rules
+                .map(rule => this.stripComments(rule))
+                .join('\n\n');
+            template = template.replace('{{RULES}}', rulesContent);
         }
 
         return template;
