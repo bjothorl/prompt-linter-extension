@@ -36,10 +36,10 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.prompt$/,
-        use: "raw-loader",
-      },
+      // {
+      //   test: /\.prompt$/,
+      //   use: "raw-loader",
+      // },
     ],
   },
   plugins: [

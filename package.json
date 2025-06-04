@@ -87,8 +87,8 @@
     "lint": "eslint src --ext ts",
     "pretest": "npm run lint",
     "analyze": "cross-env ANALYZE=true webpack",
-    "webpack": "webpack --mode development",
-    "webpack-prod": "webpack --mode production"
+    "webpack": "npm run clean && webpack --mode development && npm run copy-prompts",
+    "webpack-prod": "npm run clean && webpack --mode production && npm run copy-prompts"
   },
   "devDependencies": {
     "@types/node": "^16.x",
