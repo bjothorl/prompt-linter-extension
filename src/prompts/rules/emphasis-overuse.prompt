@@ -4,6 +4,7 @@
     Ensures emphasis is used effectively and meaningfully.
 #endignore
 
+Rule name: emphasis-overload
 Check for overuse of emphasis markers (max 2-3 per prompt):
 - Words like "important", "critical", "crucial", "essential"
 - ALL CAPS text

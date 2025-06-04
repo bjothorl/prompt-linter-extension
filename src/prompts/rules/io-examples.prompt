@@ -4,6 +4,7 @@
     Checks for missing edge cases and unclear requirements.
 #endignore
 
+Rule name: io-examples
 Check for clear input/output specifications and examples:
 - Each input format should have a clear example
 - Each output format should have a clear example

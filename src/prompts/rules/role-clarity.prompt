@@ -4,6 +4,7 @@
     Helps maintain a clear and consistent assistant identity throughout the prompt.
 #endignore
 
+Rule name: role-clarity
 Check for clear role definitions:
 - Explicit system role definition
 - Consistent role throughout the prompt

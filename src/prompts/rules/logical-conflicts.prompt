@@ -4,6 +4,7 @@
     Ensures the prompt doesn't contain impossible or conflicting demands.
 #endignore
 
+Rule name: logical-conflicts
 Check for logical conflicts and ambiguities in the prompt:
 - Contradictory instructions
 - Unclear priorities between conflicting requirements

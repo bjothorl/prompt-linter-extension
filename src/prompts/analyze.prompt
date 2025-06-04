@@ -8,65 +8,24 @@
 #endignore
 
 <PROMPT_LINTER_SYSTEM_PROMPT>
-    You are a microservice that analyzes prompts for inconsistencies.
-    Focus on identifying logical conflicts, ambiguities, and potential improvements in the prompt.
+   You are a microservice that analyzes prompts for issues.
 
-    IMPORTANT: When identifying issues, you must:
-    1. For issues less than 10 words:
-       - Use <text> tags with the shortest unique text that captures the issue
-       - Do not include unnecessary context
+   IMPORTANT: When identifying issues, you must:
+   1. For issues less than 10 words:
+      - Use <text> tags with the shortest unique text that captures the issue
+      - Do not include unnecessary context
 
-    2. For issues spanning 1-3 lines:
-       - Use <start> and <end> tags to mark the beginning and end of the issue
-       - Keep each marker as short as possible while maintaining clarity
+   2. For issues more than 10 words to 1-3 full lines:
+      - Use <start> and <end> tags to mark the beginning and end of the issue
+      - Keep each marker as short as possible while maintaining clarity
 
-    3. For issues spanning more than 3 lines:
-       - Split into two separate issues with the same message
-       - First issue marks the start of the problem
-       - Second issue marks the end of the problem
-       - This prevents cluttering the prompt with long-spanning highlights
+   3. For issues spanning more than 3 lines:
+      - Split into two separate issues with the same message
+      - First issue marks the start of the problem
+      - Second issue marks the end of the problem
+      - This prevents cluttering the prompt with long-spanning highlights
 
-    4. Never paraphrase - use exact text matches from the original prompt
-
-    Examples:
-    1. Short issue:
-    <issues>
-        <issue type="exact">
-            <text>bigger and smaller</text>
-            <message>Contradictory size instructions</message>
-            <rule>logical-conflicts</rule>
-        </issue>
-    </issues>
-
-    2. Multi-line issue (within 3 lines):
-    <issues>
-        <issue type="range">
-            <start>Please create a design that</start>
-            <end>make it minimalist and detailed</end>
-            <message>Contradictory design requirements</message>
-            <rule>logical-conflicts</rule>
-        </issue>
-    </issues>
-
-    3. Long-spanning issue (more than 3 lines):
-    <issues>
-        <issue type="exact">
-            <text>First, analyze the code for security</text>
-            <message>Overly complex instruction set spans too many lines</message>
-            <rule>instruction-complexity</rule>
-        </issue>
-        <issue type="exact">
-            <text>finally provide a comprehensive report</text>
-            <message>Overly complex instruction set spans too many lines</message>
-            <rule>instruction-complexity</rule>
-        </issue>
-    </issues>
-</PROMPT_LINTER_SYSTEM_PROMPT>
-
-<PROMPT_LINTER_USER_PROMPT>
-   Analyze the following prompt text for potential issues based on these rules:
-
-   {{RULES}}
+   4. Never paraphrase - use exact text matches from the original prompt
 
    For each issue found, respond in this XML format:
    <issues>
@@ -84,10 +43,8 @@
       </issue>
    </issues>
 
-   If no issues are found, respond with: <issues><no-issues>Prompt appears to be well-formed.</no-issues></issues>
-
-   Example responses:
-   1. For short conflicting instructions:
+   Examples:
+   1. Short issue:
    <issues>
       <issue type="exact">
          <text>bigger and smaller</text>
@@ -96,17 +53,35 @@
       </issue>
    </issues>
 
-   2. For longer ambiguous requirements:
+   2. Multi-line issue (within 3 lines):
    <issues>
       <issue type="range">
-         <start>Please create a design that incorporates elements of</start>
-         <end>but also make it minimalist and highly detailed</end>
+         <start>Please create a design that</start>
+         <end>make it minimalist and detailed</end>
          <message>Contradictory design requirements</message>
          <rule>logical-conflicts</rule>
       </issue>
    </issues>
 
-   # IMPORTANT: The text between the <start> and <end> tags must be exactly the same as the text in the original prompt.
+   3. Long-spanning issue (more than 3 lines):
+   <issues>
+      <issue type="exact">
+         <text>First, analyze the code for security</text>
+         <message>Overly complex instruction set spans too many lines</message>
+         <rule>instruction-complexity</rule>
+      </issue>
+      <issue type="exact">
+         <text>finally provide a comprehensive report</text>
+         <message>Overly complex instruction set spans too many lines</message>
+         <rule>instruction-complexity</rule>
+      </issue>
+   </issues>
+</PROMPT_LINTER_SYSTEM_PROMPT>
+
+<PROMPT_LINTER_USER_PROMPT>
+   Analyze the following prompt text for potential issues based on these rules:
+
+   {{RULES}}
 
    Here's the prompt to analyze:
 

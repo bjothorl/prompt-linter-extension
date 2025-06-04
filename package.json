@@ -79,7 +79,7 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "webpack --mode production",
+    "vscode:prepublish": "npm run webpack-prod",
     "clean": "rimraf out",
     "compile": "npm run clean && tsc -p ./ && npm run copy-prompts",
     "copy-prompts": "copyfiles -u 1 \"src/**/*.prompt\" out",

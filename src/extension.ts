@@ -155,7 +155,7 @@ async function lintDocument(document: vscode.TextDocument): Promise<void> {
       try {
         progress.report({ message: "Sending to AI service" });
         // Strip comments before sending to any AI service
-        const text = PromptUtils.stripComments(document.getText());
+        const text = PromptUtils.stripPromptLinterComments(document.getText());
         const response = await aiService.analyzePrompt(text);
 
         lastResponse = JSON.stringify(response, null, 2);
