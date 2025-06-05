@@ -84,5 +84,24 @@ Checks for effective emphasis:
 
 ## 🤝 Contributing
 
-Found a bug or have a suggestion? Please open an issue on our [GitHub repository](https://github.com/bjothorl/prompt-linter-extension). 
-The linter checks for several categories of issues:
+We welcome contributions to make this linter better! Here are some ways you can help:
+
+### 🐛 Bug Reports & Feature Requests
+- Found a bug? Please open an issue on our [GitHub repository](https://github.com/bjothorl/prompt-linter-extension)
+- Have an idea for a new feature? Share it in the issues section
+
+### 📝 New Rules & Examples
+We're always looking to expand our rule set. Consider contributing:
+- Additional prompt engineering best practices
+- New rule categories
+- More example cases (both valid and invalid)
+- Edge cases that should be caught
+
+### 💻 Code Contributions
+Want to contribute code? Great! Some areas that need work:
+- Rule implementation improvements
+- Additional model support
+
+Please check our contribution guidelines before submitting a pull request.
+
+Together we can build a more robust prompt linting tool!
