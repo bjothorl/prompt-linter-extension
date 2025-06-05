@@ -1,6 +1,6 @@
 # Prompt Linter
 
-![Prompt Linter Banner](images/banner.png)
+![Prompt Linter Banner](images/banner.jpg)
 
 AI-powered linter that helps you write better prompts by identifying logical conflicts, ambiguities, and areas for improvement.
 
