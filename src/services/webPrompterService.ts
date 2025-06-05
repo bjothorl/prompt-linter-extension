@@ -2,7 +2,7 @@ import axios from "axios";
 import { AnalysisResponse, AiService } from "../types";
 
 export class WebPrompterService implements AiService {
-  private readonly API_URL = "http://localhost:3000/api/v1/analyze";
+  private readonly API_URL = "https://webprompter.ai/api/v1/analyze";
   public lastResponse = "";
 
   constructor(private apiKey: string) {}
