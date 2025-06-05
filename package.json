@@ -74,9 +74,28 @@
             "type": "string"
           },
           "order": 5
+        },
+        "promptLinter.lintOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically lint prompts when files are saved",
+          "order": 6
+        },
+        "promptLinter.lintOnOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically lint prompts when files are opened",
+          "order": 7
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "promptLinter.lintCurrentFile",
+        "title": "Lint This Prompt",
+        "category": "Prompt Linter"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run webpack-prod",

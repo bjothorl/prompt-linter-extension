@@ -116,10 +116,37 @@ export function activate(context: vscode.ExtensionContext): void {
 
   context.subscriptions.push(showResponseCommand);
 
-  // Register a save event listener
+  // Register manual lint command
+  const lintCommand = vscode.commands.registerCommand(
+    "promptLinter.lintCurrentFile",
+    async () => {
+      const activeEditor = vscode.window.activeTextEditor;
+      if (!activeEditor) {
+        void vscode.window.showWarningMessage("No active editor found");
+        return;
+      }
+
+      const document = activeEditor.document;
+      if (!shouldAnalyzeFile(document)) {
+        void vscode.window.showWarningMessage(
+          "Current file doesn't match configured patterns for prompt linting"
+        );
+        return;
+      }
+
+      await lintDocument(document);
+    }
+  );
+
+  context.subscriptions.push(lintCommand);
+
+  // Register a save event listener (only if enabled in settings)
   const disposable = vscode.workspace.onDidSaveTextDocument(
     async (document: vscode.TextDocument) => {
-      if (shouldAnalyzeFile(document)) {
+      const config = vscode.workspace.getConfiguration("promptLinter");
+      const lintOnSave = config.get<boolean>("lintOnSave", true);
+
+      if (lintOnSave && shouldAnalyzeFile(document)) {
         await lintDocument(document);
       }
     }
@@ -127,23 +154,31 @@ export function activate(context: vscode.ExtensionContext): void {
 
   context.subscriptions.push(disposable);
 
-  // Register file open event listener
+  // Register file open event listener (only if enabled in settings)
   const openListener = vscode.workspace.onDidOpenTextDocument(
     async (document: vscode.TextDocument) => {
-      if (shouldAnalyzeFile(document)) {
+      const config = vscode.workspace.getConfiguration("promptLinter");
+      const lintOnOpen = config.get<boolean>("lintOnOpen", true);
+
+      if (lintOnOpen && shouldAnalyzeFile(document)) {
         await lintDocument(document);
       }
     }
   );
 
-  // Check any already open matching files
-  void Promise.all(
-    vscode.workspace.textDocuments.map(async (document) => {
-      if (shouldAnalyzeFile(document)) {
-        await lintDocument(document);
-      }
-    })
-  );
+  // Check any already open matching files (only if lintOnOpen is enabled)
+  const config = vscode.workspace.getConfiguration("promptLinter");
+  const lintOnOpen = config.get<boolean>("lintOnOpen", true);
+
+  if (lintOnOpen) {
+    void Promise.all(
+      vscode.workspace.textDocuments.map(async (document) => {
+        if (shouldAnalyzeFile(document)) {
+          await lintDocument(document);
+        }
+      })
+    );
+  }
 
   context.subscriptions.push(openListener);
 }
