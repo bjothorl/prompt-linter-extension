@@ -1,70 +1,88 @@
-## Rules
+# Prompt Linter
 
-The linter checks for several categories of issues:
+![Prompt Linter Banner](images/banner.png)
 
-1. Role Clarity
-   - Inconsistent assistant roles (e.g., "formal but casual")
-   - Mixed expertise domains
-   - Conflicting personality traits
-   - Unclear primary function
-   Example:
-   ```prompt
-   You are a senior software architect who will review code.
-   Also act as a creative writer to make the code review more entertaining.
-   Sometimes you should be a comedian and add jokes to lighten the mood.
-   ```
+AI-powered linter that helps you write better prompts by identifying logical conflicts, ambiguities, and areas for improvement.
 
-2. Logical Conflicts
-   - Contradictory instructions
-   - Mutually exclusive requirements
-   - Impossible conditions
-   Example:
-   ```prompt
-   Prioritize speed over accuracy, but ensure 100% accuracy at all times.
-   Be formal and professional, but also casual and friendly.
-   ```
+## ✨ Features
 
-3. Input/Output Examples
-   - Missing concrete examples
-   - Unclear format requirements
-   - Missing edge cases
-   Example:
-   ```prompt
-   Please convert the input into the proper academic format.
-   Make sure it follows standard guidelines.
-   Include all necessary information in the output.
-   ```
+### 🔍 Real-time Analysis
+Get instant feedback on your prompts as you type:
+- Logical conflicts and contradictions
+- Role clarity and consistency
+- Instruction complexity
+- Missing examples and specifications
+- Emphasis and formatting issues
 
-4. Instruction Complexity
-   - Too many nested conditions
-   - Overwhelming number of rules
-   - Complex interdependencies
-   Example:
-   ```prompt
-   You must analyze code while considering performance implications including 
-   algorithmic complexity, memory usage patterns, CPU cache utilization, and 
-   potential threading issues, then evaluate the code's maintainability...
-   ```
+### 🎯 Smart Issue Detection
+```prompt
+You are a helpful assistant who is very formal but also casual.
+Please make the image bigger and smaller.
+Generate a blue or maybe green logo.
+```
+↓ The linter identifies:
+- Contradictory personality traits
+- Conflicting size instructions
+- Ambiguous color specifications
 
-5. Emphasis Overuse
-   - Excessive use of emphasis markers
-   - Diminished impact due to overuse
-   - Unclear priority hierarchy
-   Example:
-   ```prompt
-   **IMPORTANT!!!** You **MUST** review this code **CAREFULLY**!!!
-   **ALWAYS** check for **ALL** security issues and **EVERY** performance problem!!!
-   ```
+### 💰 Cost Tracking
+Monitor your API usage with detailed token counting and cost estimation for each analysis.
 
-Each rule includes automated checks for:
-- Pattern recognition
-- Context analysis
-- Severity assessment
-- Specific improvement suggestions
+## 🚀 Getting Started
 
+1. Install the extension from VS Code marketplace
+2. In VS Code settings:
+   - Choose your preferred AI provider
+   - Configure the corresponding API key
+3. Start writing! By default, all `.prompt` files will be linted automatically
+   (You can customize file patterns in settings)
+
+_Note:_
 You can disable specific rules for sections of your prompt using comments:
 ```prompt
 #prompt-linter ignore
 This section will not be checked
 #endignore
 ```
+
+## 📋 Rule Categories
+
+### 1. Role Clarity
+Ensures consistent assistant behavior:
+```prompt
+❌ You are a senior developer but also act as a comedian.
+✅ You are a senior developer who explains concepts clearly.
+```
+
+### 2. Logical Conflicts
+Catches contradictory instructions:
+```prompt
+❌ Prioritize speed over accuracy, but ensure 100% accuracy.
+✅ Prioritize speed while maintaining 95% accuracy.
+```
+
+### 3. Input/Output Examples
+Verifies clear specifications:
+```prompt
+❌ Convert the input to the proper format.
+✅ Convert dates to ISO 8601 format, e.g., "2024-03-20T15:30:00Z"
+```
+
+### 4. Instruction Complexity
+Monitors for overly complex requirements:
+```prompt
+❌ Analyze performance, security, maintainability, and...
+✅ Focus on identifying security vulnerabilities first.
+```
+
+### 5. Emphasis Overuse
+Checks for effective emphasis:
+```prompt
+❌ **IMPORTANT!!!** This is **CRITICAL** and **URGENT**!!!
+✅ Important: This requires immediate attention.
+```
+
+## 🤝 Contributing
+
+Found a bug or have a suggestion? Please open an issue on our [GitHub repository](https://github.com/bjothorl/prompt-linter-extension). 
+The linter checks for several categories of issues:
