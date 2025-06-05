@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext): void {
         );
 
         const response = JSON.parse(lastResponse) as {
-          metadata: {
+          metadata?: {
             model: string;
             inputTokens: number;
             outputTokens: number;
@@ -62,7 +62,9 @@ export function activate(context: vscode.ExtensionContext): void {
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;");
 
-        panel.webview.html = `
+        let html = "";
+        if (response.metadata) {
+          html += `
                 <style>
                     .metadata {
                         border: 1px solid #aaaaaa;
@@ -100,12 +102,14 @@ export function activate(context: vscode.ExtensionContext): void {
                     <div class="metadata-item">Time: ${new Date(
                       response.metadata.timestamp
                     ).toLocaleString()}</div>
-                </div>
+                </div>`;
+        }
+        html += `
                 <div class="response">
                     Raw Response:
                     <pre class="content">${rawContent}</pre>
-                </div>
-            `;
+                </div>`;
+        panel.webview.html = html;
       }
     }
   );
