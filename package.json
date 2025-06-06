@@ -2,7 +2,7 @@
   "name": "prompt-linter",
   "displayName": "Prompt Linter",
   "description": "AI-powered linter for analyzing prompts. Identifies logical conflicts, ambiguities, and potential improvements in your prompts using Claude.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "ignire",
   "engines": {
     "vscode": "^1.80.0"
