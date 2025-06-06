@@ -125,15 +125,7 @@ export function activate(context: vscode.ExtensionContext): void {
         void vscode.window.showWarningMessage("No active editor found");
         return;
       }
-
       const document = activeEditor.document;
-      if (!shouldAnalyzeFile(document)) {
-        void vscode.window.showWarningMessage(
-          "Current file doesn't match configured patterns for prompt linting"
-        );
-        return;
-      }
-
       await lintDocument(document);
     }
   );

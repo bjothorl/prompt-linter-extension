@@ -2,8 +2,8 @@
   "name": "prompt-linter",
   "displayName": "Prompt Linter",
   "description": "AI-powered linter for analyzing prompts. Identifies logical conflicts, ambiguities, and potential improvements in your prompts using Claude.",
-  "version": "0.1.0",
-  "publisher": "your-publisher-name",
+  "version": "0.2.1",
+  "publisher": "ignire",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -39,7 +39,7 @@
         "promptLinter.webprompterApiKey": {
           "type": "string",
           "default": "",
-          "description": "WebPrompter API Key",
+          "description": "Go to https://webprompter.ai/api-access to signup and create an API key",
           "order": 2
         },
         "promptLinter.anthropicApiKey": {
@@ -136,12 +136,13 @@
     "theme": "dark"
   },
   "license": "MIT",
+  "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/prompt-linter"
+    "url": "https://github.com/bjothorl/prompt-linter-extension"
   },
   "bugs": {
-    "url": "https://github.com/your-username/prompt-linter/issues"
+    "url": "https://github.com/bjothorl/prompt-linter-extension/issues"
   },
   "keywords": [
     "prompt engineering",
